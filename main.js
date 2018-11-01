@@ -60,6 +60,18 @@ let removeCard = (arrOfCards, cardPlayed) => {
   return result
 }
 
+
+//create variable for stand button
+let standButton = document.querySelector('#standButton')
+
+//standButton function adds dealercard until total > 17
+let stand = () => {
+  while (dealerCount.textContent < 17) {
+    dealerCard()
+  }
+}
+
+
 let dealerCard = () =>{
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
@@ -102,6 +114,9 @@ let dealerCard = () =>{
   //dealer total points for hand
   let parsedDealerCount = parseInt(dealerCount.textContent, 10)
   parsedDealerCount += card.numVal
+  if (parsedDealerCount > 21) {
+    parsedDealerCount = 'BUST'
+  }
   dealerCount.textContent = JSON.stringify(parsedDealerCount)
 
   //removes card from deck when played
@@ -153,6 +168,9 @@ let playerCard = () =>{
   //dealer total points for hand
   let parsedPlayerCount = parseInt(playerCount.textContent, 10)
   parsedPlayerCount += card.numVal
+  if (parsedPlayerCount > 21) {
+    parsedPlayerCount = 'BUST'
+  }
   playerCount.textContent = JSON.stringify(parsedPlayerCount)
 
   //removes card from deck when played
@@ -174,5 +192,10 @@ dealButton.addEventListener('click', function() {
    playerCard()
 
   })
+
+  //eventListener for standButton
+  standButton.addEventListener('click', function() {
+    stand()
+   })
 
 })

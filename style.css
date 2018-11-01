@@ -5,3 +5,24 @@
 .redCards {
   color: #F34213;
 }
+
+.menu_area {
+  text-align: center;
+  border: 2px solid black;
+}
+
+.buttons {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.textbox {
+  background-color: black;
+  color: white;
+  border-radius: 0.25em;
+  padding-left: 2%;
+  padding-right: 2%;
+
+
+
+}
