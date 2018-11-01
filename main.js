@@ -27,13 +27,15 @@ document.addEventListener('DOMContentLoaded', function(){
   let dealCard = () => {
     return cardDeck[Math.floor(Math.random() * cardDeck.length)]
   }
-  
 
 //creates a variable for the dealer card location
 let dealerArea = document.querySelector('#dealerArea')
 
 //variable for deal button
 let dealButton = document.querySelector('#dealButton')
+
+//variable for hit hitButton
+let hitButton = document.querySelector('#hitButton')
 
 //variable for dealerCount
 let dealerCount = document.querySelector('#dealerCount')
@@ -58,7 +60,7 @@ let removeCard = (arrOfCards, cardPlayed) => {
   return result
 }
 
-let dealerCard = ()=>{
+let dealerCard = () =>{
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
 
@@ -66,7 +68,7 @@ let dealerCard = ()=>{
   let newCard = document.createElement('div')
   let newCardName = document.createElement('div')
   let newCardSuit = document.createElement('div')
-  let newCardNumVal = document.createElement('div')
+  let newCardName2 = document.createElement('div')
 
   //style card
   newCard.style.backgroundColor = 'white'
@@ -81,9 +83,9 @@ let dealerCard = ()=>{
   newCardSuit.style.fontSize = '200%'
   newCardSuit.style.marginTop = '40%'
   newCardSuit.style.marginBottom = '40%'
-  newCardNumVal.textContent = card.numVal
-  newCardNumVal.style.textAlign = 'right'
-  newCardNumVal.style.marginRight = '5%'
+  newCardName2.textContent = card.name
+  newCardName2.style.textAlign = 'right'
+  newCardName2.style.marginRight = '5%'
 
   //changes card text to red if a heart or diamond
   if(newCardSuit.textContent === '♦' || newCardSuit.textContent === '♥') {
@@ -93,7 +95,8 @@ let dealerCard = ()=>{
   //append new card
   newCard.appendChild(newCardName)
   newCard.appendChild(newCardSuit)
-  newCard.appendChild(newCardNumVal)
+  //newCard.appendChild(newCardNumVal)
+  newCard.appendChild(newCardName2)
   dealerArea.appendChild(newCard)
 
   //dealer total points for hand
@@ -108,7 +111,7 @@ let dealerCard = ()=>{
   cardsLeftInDeck.textContent = cardDeck.length
 }
 
-let playerCard = ()=>{
+let playerCard = () =>{
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
 
@@ -116,7 +119,8 @@ let playerCard = ()=>{
   let newCard = document.createElement('div')
   let newCardName = document.createElement('div')
   let newCardSuit = document.createElement('div')
-  let newCardNumVal = document.createElement('div')
+  //let newCardNumVal = document.createElement('div')
+  let newCardName2 = document.createElement('div')
 
   //style card
   newCard.style.backgroundColor = 'white'
@@ -131,9 +135,9 @@ let playerCard = ()=>{
   newCardSuit.style.fontSize = '200%'
   newCardSuit.style.marginTop = '40%'
   newCardSuit.style.marginBottom = '40%'
-  newCardNumVal.textContent = card.numVal
-  newCardNumVal.style.textAlign = 'right'
-  newCardNumVal.style.marginRight = '5%'
+  newCardName2.textContent = card.name
+  newCardName2.style.textAlign = 'right'
+  newCardName2.style.marginRight = '5%'
 
   //changes card text to red if a heart or diamond
   if(newCardSuit.textContent === '♦' || newCardSuit.textContent === '♥') {
@@ -143,7 +147,7 @@ let playerCard = ()=>{
   //append new card
   newCard.appendChild(newCardName)
   newCard.appendChild(newCardSuit)
-  newCard.appendChild(newCardNumVal)
+  newCard.appendChild(newCardName2)
   playerArea.appendChild(newCard)
 
   //dealer total points for hand
@@ -164,4 +168,11 @@ dealButton.addEventListener('click', function() {
   playerCard()
   dealerCard()
  })
+
+ //eventListener for dealButton
+ hitButton.addEventListener('click', function() {
+   playerCard()
+
+  })
+
 })
