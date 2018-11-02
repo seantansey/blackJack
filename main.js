@@ -39,11 +39,11 @@ let hitButton = document.querySelector('#hitButton')
 
 //variable for dealerCount
 let dealerCount = document.querySelector('#dealerCount')
-dealerCount.textContent = '0'
+dealerCount.textContent = 0
 
 //variable for playerCount
 let playerCount = document.querySelector('#playerCount')
-playerCount.textContent = '0'
+playerCount.textContent = 0
 
 //creates a counter for the cards left in Deck
 let cardsLeftInDeck = document.querySelector('#cardsLeftInDeck')
@@ -60,7 +60,6 @@ let removeCard = (arrOfCards, cardPlayed) => {
   return result
 }
 
-
 //create variable for stand button
 let standButton = document.querySelector('#standButton')
 
@@ -69,6 +68,15 @@ let stand = () => {
   while (dealerCount.textContent < 17) {
     dealerCard()
   }
+}
+
+//variable for bank values
+let bank = document.querySelector('#bank')
+bank.textContent = 500
+
+//function for buy in, used everytime deal is clicked
+let buyIn = () => {
+  bank.textContent -= 5
 }
 
 
@@ -117,7 +125,8 @@ let dealerCard = () =>{
   if (parsedDealerCount > 21) {
     parsedDealerCount = 'BUST'
   }
-  dealerCount.textContent = JSON.stringify(parsedDealerCount)
+  dealerCount.textContent = parsedDealerCount
+
 
   //removes card from deck when played
   cardDeck = removeCard(cardDeck, card)
@@ -171,7 +180,7 @@ let playerCard = () =>{
   if (parsedPlayerCount > 21) {
     parsedPlayerCount = 'BUST'
   }
-  playerCount.textContent = JSON.stringify(parsedPlayerCount)
+  playerCount.textContent = parsedPlayerCount
 
   //removes card from deck when played
   cardDeck = removeCard(cardDeck, card)
@@ -182,6 +191,11 @@ let playerCard = () =>{
 
 //eventListener for dealButton
 dealButton.addEventListener('click', function() {
+  dealerCount.textContent = '0'
+  playerCount.textContent = '0'
+  dealerArea.textContent = ''
+  playerArea.textContent = ''
+  buyIn()
   playerCard()
   playerCard()
   dealerCard()

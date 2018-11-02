@@ -6,14 +6,19 @@
   color: #F34213;
 }
 
-.menu_area {
+.menuArea {
   text-align: center;
-  border: 2px solid black;
+  background-color: #3E2F5B;
+  color: white;
+
 }
 
 .buttons {
   margin-top: 5%;
   margin-bottom: 5%;
+  background-color: #1090FF;
+  border-color: black;
+  width: 80px;
 }
 
 .textbox {
@@ -22,7 +27,12 @@
   border-radius: 0.25em;
   padding-left: 2%;
   padding-right: 2%;
+}
 
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
 
-
+.totalTopMargin {
+  margin-top : 2%;
 }
