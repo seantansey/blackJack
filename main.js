@@ -79,6 +79,19 @@ let buyIn = () => {
   bank.textContent -= 5
 }
 
+//function that disables all buttons other than deal if BUST
+let bustDisable = () => {
+  if (playerCount.textContent === 'BUST' || dealerCount.textContent === 'BUST') {
+    hitButton.setAttribute('disabled', true)
+    standButton.setAttribute('disabled', true)
+  }
+}
+
+//function that enables hit and stand buttons
+let enableStandHit = () => {
+  hitButton.removeAttribute('disabled')
+  standButton.removeAttribute('disabled')
+}
 
 let dealerCard = () =>{
   //run dealCard() to create new card, set equal to variable card for access
@@ -135,7 +148,7 @@ let dealerCard = () =>{
   cardsLeftInDeck.textContent = cardDeck.length
 }
 
-let playerCard = () =>{
+let playerCard = () => {
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
 
@@ -199,17 +212,21 @@ dealButton.addEventListener('click', function() {
   playerCard()
   playerCard()
   dealerCard()
+  enableStandHit()
+
  })
 
  //eventListener for dealButton
  hitButton.addEventListener('click', function() {
    playerCard()
+   bustDisable()
 
   })
 
   //eventListener for standButton
   standButton.addEventListener('click', function() {
     stand()
+    bustDisable()
    })
 
 })
