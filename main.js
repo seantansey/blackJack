@@ -37,6 +37,10 @@ let dealButton = document.querySelector('#dealButton')
 //variable for hit hitButton
 let hitButton = document.querySelector('#hitButton')
 
+// variable for bet button
+let betButton = document.querySelector('#betButton')
+
+
 //variable for dealerCount
 let dealerCount = document.querySelector('#dealerCount')
 dealerCount.textContent = 0
@@ -105,6 +109,11 @@ let doubleDisable = () => {
   doubleDownButton.setAttribute('disabled', true)
 }
 
+//disable bet button
+let betDisable = () => {
+  betButton.setAttribute('disabled', true)
+}
+
 //function that disables all buttons other than deal if BUST
 let bustDisable = () => {
   if (playerCount.textContent === 'BUST' || dealerCount.textContent === 'BUST') {
@@ -160,7 +169,11 @@ let evalScore = (pScore, dScore) => {
     bet.textContent = 0
   } else if (pScore.textContent < dScore.textContent){
     bet.textContent = 0
+    enableBet()
+  } else {
+    enableBet()
   }
+
   //note: if pScore ==== dScore we leave the current bet on the table
 }
 
@@ -177,6 +190,12 @@ let doubleDown = () => {
 let enableDoubleDown = () => {
   doubleDownButton.removeAttribute('disabled')
 }
+
+//functin that enables bet button after each round is complete
+let enableBet = () => {
+  betButton.removeAttribute('disabled')
+}
+
 
 //deals a dealer card
 let dealerCard = () => {
@@ -307,6 +326,7 @@ dealButton.addEventListener('click', function() {
   dealerCard()
   enableStandHit()
   enableDoubleDown()
+  betDisable()
  })
 
  //eventListener for dealButton
@@ -314,6 +334,10 @@ dealButton.addEventListener('click', function() {
    playerCard()
    bustDisable()
    doubleDisable()
+   //check for user bust and allows for betting
+   if (playerCount.textContent === 'BUST') {
+     enableBet()
+   }
   })
 
   //eventListener for standButton
@@ -324,6 +348,7 @@ dealButton.addEventListener('click', function() {
     standDisable()
     doubleDisable()
     evalScore(playerCount, dealerCount)
+    enableBet()
    })
 
    //eventListener for bet5Button
@@ -340,6 +365,7 @@ dealButton.addEventListener('click', function() {
       stand()
       evalScore(playerCount, dealerCount)
       doubleDisable()
+      enableBet()
     })
 
 })
