@@ -100,6 +100,11 @@ let standDisable = () => {
   standButton.setAttribute('disabled', true)
 }
 
+//disable double button
+let doubleDisable = () => {
+  doubleDownButton.setAttribute('disabled', true)
+}
+
 //function that disables all buttons other than deal if BUST
 let bustDisable = () => {
   if (playerCount.textContent === 'BUST' || dealerCount.textContent === 'BUST') {
@@ -148,7 +153,32 @@ let scoreCalculator = (inputCount, inputArray, screenCount) => {
   screenCount.textContent = inputCount
 }
 
+//evaluates scores and determines a winner upon the stand button being pressed
+let evalScore = (pScore, dScore) => {
+  if (pScore.textContent > dScore.textContent || dScore.textContent === "BUST") {
+    bank.textContent =  parseInt(bank.textContent) + parseInt(bet.textContent * 2)
+    bet.textContent = 0
+  } else if (pScore.textContent < dScore.textContent){
+    bet.textContent = 0
+  }
+  //note: if pScore ==== dScore we leave the current bet on the table
+}
 
+//variable for double down button
+let doubleDownButton = document.querySelector('#doubleDownButton')
+
+//function for doubleDown
+let doubleDown = () => {
+  bank.textContent -= bet.textContent
+  bet.textContent = parseInt(bet.textContent * 2)
+}
+
+//function that enables hit and stand buttons
+let enableDoubleDown = () => {
+  doubleDownButton.removeAttribute('disabled')
+}
+
+//deals a dealer card
 let dealerCard = () => {
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
@@ -203,6 +233,7 @@ let dealerCard = () => {
   cardsLeftInDeck.textContent = cardDeck.length
 }
 
+//deals a player card
 let playerCard = () => {
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
@@ -251,6 +282,10 @@ let playerCard = () => {
   //calculates the score and handles aces if bust occurs
   scoreCalculator(parsedPlayerCount, playerCardArray, playerCount)
 
+  if (playerCount.textContent === "BUST") {
+    bet.textContent = 0
+  }
+
   //removes card from deck when played
   cardDeck = removeCard(cardDeck, card)
 
@@ -271,12 +306,14 @@ dealButton.addEventListener('click', function() {
   playerCard()
   dealerCard()
   enableStandHit()
+  enableDoubleDown()
  })
 
  //eventListener for dealButton
  hitButton.addEventListener('click', function() {
    playerCard()
    bustDisable()
+   doubleDisable()
   })
 
   //eventListener for standButton
@@ -285,11 +322,24 @@ dealButton.addEventListener('click', function() {
     bustDisable()
     hitDisable()
     standDisable()
+    doubleDisable()
+    evalScore(playerCount, dealerCount)
    })
 
-   //eventListener for standButton
+   //eventListener for bet5Button
    betButton.addEventListener('click', function() {
     bet5()
+    })
+
+    //eventListener for doubleDownButton
+    doubleDownButton.addEventListener('click', function() {
+      doubleDown()
+      hitDisable()
+      standDisable()
+      playerCard()
+      stand()
+      evalScore(playerCount, dealerCount)
+      doubleDisable()
     })
 
 })
