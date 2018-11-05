@@ -76,14 +76,37 @@ bank.textContent = 500
 
 //function for buy in, used everytime deal is clicked
 let buyIn = () => {
-  bank.textContent -= 5
+  bank.textContent -= bet.textContent
+}
+
+//variable for bet value
+let bet = document.querySelector('#bet')
+bet.textContent = 0
+
+//bets 5 everytime bet button pushed
+let bet5 = () => {
+  let newBet = parseInt(bet.textContent,10)
+  newBet += 5
+  bet.textContent = newBet
+}
+
+//disable hit button
+let hitDisable = () => {
+  hitButton.setAttribute('disabled', true)
+}
+
+//disable stand button
+let standDisable = () => {
+  standButton.setAttribute('disabled', true)
 }
 
 //function that disables all buttons other than deal if BUST
 let bustDisable = () => {
   if (playerCount.textContent === 'BUST' || dealerCount.textContent === 'BUST') {
-    hitButton.setAttribute('disabled', true)
-    standButton.setAttribute('disabled', true)
+    // hitButton.setAttribute('disabled', true)
+    // standButton.setAttribute('disabled', true)
+    hitDisable()
+    standDisable()
   }
 }
 
@@ -260,6 +283,13 @@ dealButton.addEventListener('click', function() {
   standButton.addEventListener('click', function() {
     stand()
     bustDisable()
+    hitDisable()
+    standDisable()
    })
+
+   //eventListener for standButton
+   betButton.addEventListener('click', function() {
+    bet5()
+    })
 
 })
