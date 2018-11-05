@@ -93,7 +93,40 @@ let enableStandHit = () => {
   standButton.removeAttribute('disabled')
 }
 
-let dealerCard = () =>{
+//player card array
+let playerCardArray = []
+
+//dealer card array
+let dealerCardArray = []
+
+//clears playerCardArray for every new hand
+let playerCardClear = () => {
+  playerCardArray = []
+}
+
+//clears dealerCardArray
+let dealerCardClear = () => {
+  dealerCardArray = []
+}
+
+//calculates score and handles aces and busts
+let scoreCalculator = (inputCount, inputArray, screenCount) => {
+  if (inputCount > 21) {
+    for (let x = 0; x < inputArray.length; x++) {
+      if (inputArray[x] === 11) {
+        inputArray[x] = 1
+        inputCount = inputArray.reduce((a, b) => a + b)
+        break
+      } else {
+        inputCount = 'BUST'
+      }
+    }
+  }
+  screenCount.textContent = inputCount
+}
+
+
+let dealerCard = () => {
   //run dealCard() to create new card, set equal to variable card for access
   let card = dealCard()
 
@@ -128,18 +161,17 @@ let dealerCard = () =>{
   //append new card
   newCard.appendChild(newCardName)
   newCard.appendChild(newCardSuit)
-  //newCard.appendChild(newCardNumVal)
   newCard.appendChild(newCardName2)
   dealerArea.appendChild(newCard)
 
   //dealer total points for hand
-  let parsedDealerCount = parseInt(dealerCount.textContent, 10)
-  parsedDealerCount += card.numVal
-  if (parsedDealerCount > 21) {
-    parsedDealerCount = 'BUST'
-  }
-  dealerCount.textContent = parsedDealerCount
+  dealerCardArray.push(card.numVal)
 
+  //variable that calculates score
+  let parsedDealerCount = dealerCardArray.reduce((a, b) => a + b)
+
+  //analyzes score and adjusts aces for busts
+  scoreCalculator(parsedDealerCount, dealerCardArray, dealerCount)
 
   //removes card from deck when played
   cardDeck = removeCard(cardDeck, card)
@@ -188,12 +220,13 @@ let playerCard = () => {
   playerArea.appendChild(newCard)
 
   //dealer total points for hand
-  let parsedPlayerCount = parseInt(playerCount.textContent, 10)
-  parsedPlayerCount += card.numVal
-  if (parsedPlayerCount > 21) {
-    parsedPlayerCount = 'BUST'
-  }
-  playerCount.textContent = parsedPlayerCount
+  playerCardArray.push(card.numVal)
+
+  //keeps track of player score
+  let parsedPlayerCount = playerCardArray.reduce((a, b) => a + b)
+
+  //calculates the score and handles aces if bust occurs
+  scoreCalculator(parsedPlayerCount, playerCardArray, playerCount)
 
   //removes card from deck when played
   cardDeck = removeCard(cardDeck, card)
@@ -208,19 +241,19 @@ dealButton.addEventListener('click', function() {
   playerCount.textContent = '0'
   dealerArea.textContent = ''
   playerArea.textContent = ''
+  dealerCardClear()
+  playerCardClear()
   buyIn()
   playerCard()
   playerCard()
   dealerCard()
   enableStandHit()
-
  })
 
  //eventListener for dealButton
  hitButton.addEventListener('click', function() {
    playerCard()
    bustDisable()
-
   })
 
   //eventListener for standButton

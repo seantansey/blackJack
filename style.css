@@ -2,6 +2,7 @@
   background-color: #136F63;
 }
 
+
 .redCards {
   color: #F34213;
 }
@@ -16,13 +17,13 @@
 .buttons {
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: #1090FF;
+  background-color: #e0ca3c;
   border-color: black;
   width: 80px;
 }
 
 .textbox {
-  background-color: black;
+  background-color: #000f08;
   color: white;
   border-radius: 0.25em;
   padding-left: 2%;
