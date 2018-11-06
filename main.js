@@ -99,6 +99,16 @@ let hitDisable = () => {
   hitButton.setAttribute('disabled', true)
 }
 
+//disable dealButton
+let dealDisable = () => {
+  dealButton.setAttribute('disabled', true)
+}
+
+//enable dealButton
+let dealEnable = () => {
+  dealButton.removeAttribute('disabled')
+}
+
 //disable stand button
 let standDisable = () => {
   standButton.setAttribute('disabled', true)
@@ -170,6 +180,7 @@ let evalScore = (pScore, dScore) => {
     enableBet()
   } else {
     enableBet()
+    dealEnable()
   }
 }
 
@@ -339,6 +350,7 @@ dealButton.addEventListener('click', function() {
   enableStandHit()
   enableDoubleDown()
   betDisable()
+  dealDisable()
 
  })
 
@@ -369,6 +381,7 @@ dealButton.addEventListener('click', function() {
    //eventListener for bet5Button
    betButton.addEventListener('click', function() {
     bet5()
+    dealEnable()
     })
 
     //eventListener for doubleDownButton

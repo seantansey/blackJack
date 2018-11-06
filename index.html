@@ -8,6 +8,7 @@
   <script type="text/javascript" src="main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
   <title>BlackJack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 </head>
 
 <body>
@@ -46,6 +47,7 @@
       </div>
     </nav>
   </div>
+
   <div class="container-fluid green">
     <div class="row">
       <div class=" col-xs-12 col-sm-10">
@@ -61,15 +63,15 @@
             <div id="playerArea"></div>
           </div>
         </div>
-
       </div>
+
       <div class="col-xs-12 col-md-2 menuArea">
         <p>Cards in Deck:<span id="cardsLeftInDeck"> </span></p>
         <h6>Money in the Bank:</h6>
         <h2>$<span id="bank"></span></h2>
         <h6>Current Bet: $<span id="bet"></span></h6>
         <button type="button" class="btn btn-dark buttons" id="betButton">Bet $5</button>
-        <button type="button" class="btn btn-dark buttons" id="dealButton">Deal</button>
+        <button type="button" class="btn btn-dark buttons" id="dealButton" disabled>Deal</button>
         <button type="button" class="btn btn-dark buttons" id="hitButton" disabled>Hit</button>
         <button type="button" class="btn btn-dark buttons" id="standButton" disabled>Stand</button>
         <button type="button" class="btn btn-dark buttons" id="splitButton" disabled>Split</button>
