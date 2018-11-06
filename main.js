@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 //variable for the deck of cards created
   let cardDeck = createDeck()
 
+
 //deals a randomly selected card
   let dealCard = () => {
     return cardDeck[Math.floor(Math.random() * cardDeck.length)]
@@ -39,7 +40,6 @@ let hitButton = document.querySelector('#hitButton')
 
 // variable for bet button
 let betButton = document.querySelector('#betButton')
-
 
 //variable for dealerCount
 let dealerCount = document.querySelector('#dealerCount')
@@ -117,8 +117,6 @@ let betDisable = () => {
 //function that disables all buttons other than deal if BUST
 let bustDisable = () => {
   if (playerCount.textContent === 'BUST' || dealerCount.textContent === 'BUST') {
-    // hitButton.setAttribute('disabled', true)
-    // standButton.setAttribute('disabled', true)
     hitDisable()
     standDisable()
   }
@@ -173,8 +171,6 @@ let evalScore = (pScore, dScore) => {
   } else {
     enableBet()
   }
-
-  //note: if pScore ==== dScore we leave the current bet on the table
 }
 
 //variable for double down button
@@ -194,6 +190,20 @@ let enableDoubleDown = () => {
 //functin that enables bet button after each round is complete
 let enableBet = () => {
   betButton.removeAttribute('disabled')
+}
+
+//var for signin button
+let submitButton = document.querySelector('#submit')
+
+
+//userList for local localStorage
+let userList = []
+
+//function that shuffles deck aka, checks if there are zero cards left and refills deck if so
+let shuffle = () => {
+  if (cardDeck.length === 0) {
+    cardDeck = createDeck()
+  }
 }
 
 
@@ -261,7 +271,6 @@ let playerCard = () => {
   let newCard = document.createElement('div')
   let newCardName = document.createElement('div')
   let newCardSuit = document.createElement('div')
-  //let newCardNumVal = document.createElement('div')
   let newCardName2 = document.createElement('div')
 
   //style card
@@ -322,16 +331,21 @@ dealButton.addEventListener('click', function() {
   playerCardClear()
   buyIn()
   playerCard()
+  shuffle()
   playerCard()
+  shuffle()
   dealerCard()
+  shuffle()
   enableStandHit()
   enableDoubleDown()
   betDisable()
+
  })
 
  //eventListener for dealButton
  hitButton.addEventListener('click', function() {
    playerCard()
+   shuffle()
    bustDisable()
    doubleDisable()
    //check for user bust and allows for betting
@@ -343,6 +357,7 @@ dealButton.addEventListener('click', function() {
   //eventListener for standButton
   standButton.addEventListener('click', function() {
     stand()
+    shuffle()
     bustDisable()
     hitDisable()
     standDisable()
@@ -362,10 +377,23 @@ dealButton.addEventListener('click', function() {
       hitDisable()
       standDisable()
       playerCard()
+      shuffle()
       stand()
+      shuffle()
       evalScore(playerCount, dealerCount)
       doubleDisable()
       enableBet()
     })
+
+    submitButton.addEventListener('click', function(e) {
+      //email variable
+      let email = document.querySelector('#email').value
+      let password = document.querySelector('#password').value
+      userList.push({'email': email, 'password': password})
+      localStorage.setItem('User', JSON.stringify(userList))
+
+    })
+
+
 
 })

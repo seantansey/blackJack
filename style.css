@@ -14,6 +14,10 @@
 
 }
 
+
+.formSize {
+  width: 300px;
+}
 .buttons {
   margin-top: 5%;
   margin-bottom: 5%;
@@ -21,6 +25,21 @@
   border-color: black;
   width: 80px;
 }
+
+#dropdownMenuButton{
+  background-color: #e0ca3c;
+  border-color: black;
+  width: 80px;
+  color:white;
+}
+
+#submit{
+  background-color: #1090ff;
+  border-color: black;
+  width: 80px;
+  color:white;
+}
+
 
 .textbox {
   background-color: #000f08;
