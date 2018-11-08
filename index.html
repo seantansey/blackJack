@@ -20,7 +20,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="">Home<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" id="Strategy" data-toggle="modal" data-target="#exampleModal2" href="#">Basic Strategy</a>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,15 +81,15 @@
 
   <div class="container-fluid green">
     <div class="row">
-      <div class=" col-xs-12 col-sm-10">
+      <div class=" col-xs-12 col-md-10">
         <div class='row'>
-          <div class="col-xs-12 col-sm-12 totalTopMargin">
+          <div class="col-xs-12 col-md-12 totalTopMargin">
             <h2><span class="textbox">Dealer Total:<span id="dealerCount" class="score"></span></h2>
             <div id="dealerArea"></div>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12 col-sm-12 totalTopMargin">
+          <div class="col-xs-12 col-md-12 totalTopMargin">
             <h2><span class='textbox'>Player Total:<span id="playerCount" class="score"></span></h2>
             <div id="playerArea"></div>
           </div>
@@ -97,16 +97,22 @@
       </div>
 
       <div class="col-xs-12 col-md-2 menuArea">
-        <p>Cards in Deck:<span id="cardsLeftInDeck"> </span></p>
-        <h6>Money in the Bank:</h6>
-        <h2>$<span id="bank"></span></h2>
-        <h6>Current Bet: $<span id="bet"></span></h6>
-        <button type="button" class="btn btn-dark buttons" id="betButton">Bet $5</button>
-        <button type="button" class="btn btn-dark buttons" id="dealButton" disabled>Deal</button>
-        <button type="button" class="btn btn-dark buttons" id="hitButton" disabled>Hit</button>
-        <button type="button" class="btn btn-dark buttons" id="standButton" disabled>Stand</button>
-        <button type="button" class="btn btn-dark buttons" id="splitButton" disabled>Split</button>
-        <button type="button" class="btn btn-dark buttons" id="doubleDownButton" disabled>Double</button>
+
+          <h6>Cards in Deck:<span id="cardsLeftInDeck"></span></h6>
+          <h6>Current Bet: $<span id="bet"></span></h6>
+
+
+
+          <h4>Bank: $<span id="bank"></span></h4>
+
+
+          <button type="button" class="btn btn-dark buttons" id="betButton">Bet $5</button>
+          <button type="button" class="btn btn-dark buttons" id="dealButton" disabled>Deal</button>
+          <button type="button" class="btn btn-dark buttons" id="hitButton" disabled>Hit</button>
+          <button type="button" class="btn btn-dark buttons" id="standButton" disabled>Stand</button>
+          <button type="button" class="btn btn-dark buttons" id="splitButton" disabled>Split</button>
+          <button type="button" class="btn btn-dark buttons" id="doubleDownButton" disabled>Double</button>
+
       </div>
     </div>
     <div id="snackbar">Yay</div>

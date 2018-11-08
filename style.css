@@ -23,7 +23,7 @@
   margin-bottom: 5%;
   background-color: #e0ca3c;
   border-color: black;
-  width: 80px;
+  width: 100px;
 }
 
 #dropdownMenuButton{
@@ -105,4 +105,8 @@ body {
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
+}
+
+.float {
+  float: left;
 }
