@@ -217,6 +217,17 @@ let shuffle = () => {
   }
 }
 
+//variable for snackbar
+let snack = document.querySelector('#snackbar')
+
+
+//function for snackbar/toast
+function showSnack() {
+  snack.className = 'show'
+  setTimeout(function(){ snack.className = snack.className.replace("show", ""); }, 3000)
+
+}
+
 
 //deals a dealer card
 let dealerCard = () => {
@@ -407,6 +418,10 @@ dealButton.addEventListener('click', function() {
       let name = document.querySelector('#name').value
       userList.push({'name': name, 'email': email, 'password': password})
       localStorage.setItem('User', JSON.stringify(userList))
+      if (email && password && name) {
+        snack.textContent = `Thanks for signing in ${name}`
+         showSnack()
+      }
 
     })
 
