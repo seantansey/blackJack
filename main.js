@@ -416,9 +416,9 @@ dealButton.addEventListener('click', function() {
       let email = document.querySelector('#email').value
       let password = document.querySelector('#password').value
       let name = document.querySelector('#name').value
-      userList.push({'name': name, 'email': email, 'password': password})
-      localStorage.setItem('User', JSON.stringify(userList))
       if (email && password && name) {
+        userList.push({'name': name, 'email': email, 'password': password})
+        localStorage.setItem('User', JSON.stringify(userList))
         snack.textContent = `Thanks for signing in ${name}`
          showSnack()
       }
