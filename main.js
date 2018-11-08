@@ -416,7 +416,4 @@ dealButton.addEventListener('click', function() {
          localStorage.setItem('User', JSON.stringify(userList))
       }
     })
-
-
-
 })

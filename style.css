@@ -2,7 +2,6 @@
   background-color: #136F63;
 }
 
-
 .redCards {
   color: #F34213;
 }
@@ -16,12 +15,13 @@
 .formSize {
   width: 300px;
 }
+
 .buttons {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   background-color: #e0ca3c;
   border-color: black;
-  width: 100px;
+  width: 105px;
 }
 
 #dropdownMenuButton{
@@ -37,7 +37,6 @@
   width: 80px;
   color:white;
 }
-
 
 .textbox {
   background-color: #000f08;
@@ -103,8 +102,4 @@ body {
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
-}
-
-.float {
-  float: left;
 }
