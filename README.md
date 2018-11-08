@@ -22,12 +22,12 @@ Style Guide
   Deep Koamaru: #3E2F5B
 
   Font:
-  Google Font: Muli
-  https://fonts.google.com/specimen/Muli
+  Google Font: Arimo
+  https://fonts.google.com/specimen/Arimo
 
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
-  font-family: 'Muli', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 
 
 Planning:
