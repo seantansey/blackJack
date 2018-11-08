@@ -67,7 +67,7 @@
                       <label for="exampleDropdownFormPassword2">Password</label>
                       <input type="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="submit">Submit</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </form>
                 </div>
@@ -97,22 +97,15 @@
       </div>
 
       <div class="col-xs-12 col-md-2 menuArea">
-
-          <h6>Cards in Deck:<span id="cardsLeftInDeck"></span></h6>
+          <h6 class="mt-2">Cards in Deck:<span id="cardsLeftInDeck"></span></h6>
           <h6>Current Bet: $<span id="bet"></span></h6>
-
-
-
           <h4>Bank: $<span id="bank"></span></h4>
-
-
           <button type="button" class="btn btn-dark buttons" id="betButton">Bet $5</button>
           <button type="button" class="btn btn-dark buttons" id="dealButton" disabled>Deal</button>
           <button type="button" class="btn btn-dark buttons" id="hitButton" disabled>Hit</button>
           <button type="button" class="btn btn-dark buttons" id="standButton" disabled>Stand</button>
           <button type="button" class="btn btn-dark buttons" id="splitButton" disabled>Split</button>
           <button type="button" class="btn btn-dark buttons" id="doubleDownButton" disabled>Double</button>
-
       </div>
     </div>
     <div id="snackbar">Yay</div>

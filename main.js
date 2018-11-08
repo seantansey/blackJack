@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function(){
 //variable for the deck of cards created
   let cardDeck = createDeck()
 
-
 //deals a randomly selected card
   let dealCard = () => {
     return cardDeck[Math.floor(Math.random() * cardDeck.length)]
@@ -220,14 +219,11 @@ let shuffle = () => {
 //variable for snackbar
 let snack = document.querySelector('#snackbar')
 
-
 //function for snackbar/toast
 function showSnack() {
   snack.className = 'show'
   setTimeout(function(){ snack.className = snack.className.replace("show", ""); }, 3000)
-
 }
-
 
 //deals a dealer card
 let dealerCard = () => {
@@ -362,7 +358,6 @@ dealButton.addEventListener('click', function() {
   enableDoubleDown()
   betDisable()
   dealDisable()
-
  })
 
  //eventListener for dealButton
@@ -411,18 +406,15 @@ dealButton.addEventListener('click', function() {
     })
 
     submitButton.addEventListener('click', function(e) {
-
-      //email variable
       let email = document.querySelector('#email').value
       let password = document.querySelector('#password').value
       let name = document.querySelector('#name').value
       if (email && password && name) {
-        userList.push({'name': name, 'email': email, 'password': password})
-        localStorage.setItem('User', JSON.stringify(userList))
         snack.textContent = `Thanks for signing in ${name}`
          showSnack()
+         userList.push({'name': name, 'email': email, 'password': password})
+         localStorage.setItem('User', JSON.stringify(userList))
       }
-
     })
 
 
