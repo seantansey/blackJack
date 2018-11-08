@@ -368,6 +368,7 @@ dealButton.addEventListener('click', function() {
 
   //eventListener for standButton
   standButton.addEventListener('click', function() {
+    shuffle()
     stand()
     shuffle()
     bustDisable()
@@ -399,10 +400,12 @@ dealButton.addEventListener('click', function() {
     })
 
     submitButton.addEventListener('click', function(e) {
+
       //email variable
       let email = document.querySelector('#email').value
       let password = document.querySelector('#password').value
-      userList.push({'email': email, 'password': password})
+      let name = document.querySelector('#name').value
+      userList.push({'name': name, 'email': email, 'password': password})
       localStorage.setItem('User', JSON.stringify(userList))
 
     })
