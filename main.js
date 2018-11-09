@@ -226,6 +226,9 @@ function showSnack() {
   setTimeout(function(){ snack.className = snack.className.replace("show", ""); }, 3000)
 }
 
+//var for form
+let form = document.querySelector('form')
+
 //deals a dealer card
 let dealerCard = () => {
   //run dealCard() to create new card, set equal to variable card for access
@@ -407,7 +410,7 @@ dealButton.addEventListener('click', function() {
     })
 
 
-    submitButton.addEventListener('click', function(event) {
+    form.addEventListener('submit', function(event) {
       event.preventDefault()
       let email = document.querySelector('#email').value
       let password = document.querySelector('#password').value
