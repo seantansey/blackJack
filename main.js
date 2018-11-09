@@ -179,7 +179,8 @@ let evalScore = (pScore, dScore) => {
     enableBet()
   } else {
     enableBet()
-    dealEnable()
+    bank.textContent =  parseInt(bank.textContent) + parseInt(bet.textContent)
+    bet.textContent = 0
   }
 }
 
@@ -405,7 +406,9 @@ dealButton.addEventListener('click', function() {
       enableBet()
     })
 
-    submitButton.addEventListener('click', function(e) {
+
+    submitButton.addEventListener('click', function(event) {
+      event.preventDefault()
       let email = document.querySelector('#email').value
       let password = document.querySelector('#password').value
       let name = document.querySelector('#name').value
@@ -416,4 +419,5 @@ dealButton.addEventListener('click', function() {
          localStorage.setItem('User', JSON.stringify(userList))
       }
     })
+
 })
